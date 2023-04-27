@@ -53,6 +53,17 @@ function animation() {
   let mediaAnimation = gsap.matchMedia();
 
   mediaAnimation.add("(min-width: 1025px)", () => {
+    gsap.to(".line", {
+      scrollTrigger: {
+        trigger: "body",
+        scrub: true,
+        start: "top top",
+        end: "bottom bottom",
+      },
+      scaleX: 1,
+      transformOrigin: "left center",
+    });
+
     const tlPromo = gsap.timeline({});
     const tlImages = gsap.timeline({
       scrollTrigger: {
@@ -145,12 +156,26 @@ function animation() {
     });
 
     tlPoint
-      .to(".point", {
+      .to("body", {
         backgroundColor: "#000",
       })
       .to(".point__title", {
         color: "#fff",
       })
+      .to(
+        ".plus-block__text",
+        {
+          color: "#fff",
+        },
+        "<"
+      )
+      .to(
+        ".plus-block__title span:last-child",
+        {
+          color: "#fff",
+        },
+        "<"
+      )
       .to(
         ".point__descr",
         {
@@ -216,6 +241,17 @@ function animation() {
 
   mediaAnimation.add("(max-width: 1024px)", () => {
     const tlPromo = gsap.timeline({});
+
+    gsap.to(".line", {
+      scrollTrigger: {
+        trigger: "body",
+        scrub: true,
+        start: "top top",
+        end: "bottom bottom",
+      },
+      scaleX: 1,
+      transformOrigin: "left center",
+    });
 
     tlPromo
       .to(".promo__title span:first-child", {
